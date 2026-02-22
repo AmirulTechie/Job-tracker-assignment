@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Tracker | Home</title>
+    <!-- fav icon -->
+     <link rel="shortcut icon" href="./jobs.png" type="image/x-icon">
+     <!-- style sheet -->
+      <link rel="stylesheet" href="tailwind.init.css">
+      <!-- daisy and tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <!--CSS-->
+    <style>
+        *{
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-[#002C5C]">
+    <header class="w-[80%] mx-auto text-[#002C5C] space-y-5 py-10">
+        <h1 class="font-bold text-2xl">Job Application Tracker</h1>
+        <div class="dashBoard flex gap-4">
+            <div class="bg-white w-[360px] p-5 rounded-2xl">
+                <p class="">Total</p>
+                <p id="total-count" class="text-2xl font-bold">0</p>
+            </div>
+            <div class="bg-white w-[360px] p-5 rounded-2xl">
+                <p class="">Interview</p>
+                <p id="total-count" class="text-[#10B981] text-2xl font-bold">0</p>
+            </div>
+            <div class="bg-white w-[360px] p-5 rounded-2xl">
+                <p class="">Rejected</p>
+                <p id="total-count" class="text-2xl font-bold text-[#EF4444]">0</p>
+            </div>
+        </div>
+        <hr class="opacity-20 mt-4">
+    </header>
+    <main class="w-[80%] mx-auto">
+        <section class="flex justify-between">
+            <div class="left-part">
+            <h2 class="font-bold text-xl mb-5">Available Jobs</h2>
+            <div class="toggle-buttons flex gap-3.5">
+                <button id="all-filter-btn" class="btn btn-sm bg-blue-600 text-white">All</button>
+                <button id="interview-filter-btn" class="btn btn-sm">Interview</button>
+                <button id="rejected-filter-btn" class="btn btn-sm">Rejected</button>
+            </div>
+            </div>
+            <div class="right-part">
+                <div class="cardCounter">
+                    <p class="text-[12px]"><span id="all-filter-card-count">0</span> jobs</p>
+                </div>
+            </div>
+        </section>
+        <section id="all-filer" class="mt-10">
+            <!-- Card 1 -->
+             <div class="jobCardHolder">
+            <div class="jobCard bg-white p-6 rounded-2xl">
+                <!-- Main part 1 -->
+                    <!-- part 1 -->
+                <h2 id="jobHeading" class="text-[16px] font-bold">Mobile First Corp</h2>
+                <p id="jobTitle" class="mb-5 text-[#64748B] text-[12px]">React Native Developer</p>
+                    <!-- part 2 -->
+                <p id="jobType" class="text-[#64748B] text-[12px] mb-2">Remote
+                •
+                Full-time
+                •
+                $130,000 - $175,000</p>
+                <!-- part 3 -->
+                 <p id="state" class="bg-[#EEF4FF] px-3 py-2 w-28 text-[12px] text-center">NOT APPLIED</p>
+                 <p class="text-[#323B49] text-[12px] mb-3.5 mt-3.5">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                 <!-- Part 5 -->
+                 <div class="buttons flex gap-3">
+                    <button class="btn btn-outline btn-success btn-sm">Success</button>
+                    <button class="btn btn-outline btn-error btn-sm">Error</button>
+                 </div>
+            </div>
+            </div>
+            
+        </section>
+    </main>
+</body>
+</html>
