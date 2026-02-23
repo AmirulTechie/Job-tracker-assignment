@@ -39,6 +39,10 @@ function toggleStyle(id){
     } else if (id == 'all-filter-btn'){
         allFilterSection.classList.remove('hidden');
         interviewFilterSection.classList.add('hidden');
+    }else if (id == 'rejected-filter-btn'){
+        allFilterSection.classList.add('hidden');
+        interviewFilterSection.classList.add('hidden');
+        rejectedFilterSection.classList.remove('hidden');
     }
     
 }
@@ -66,6 +70,27 @@ mainContainer.addEventListener('click', function(event){
         }
         renderInterview();
         totalCardCount();
+    } else if (event.target.classList.contains('btn-error')) {
+        const parentNode = event.target.parentNode.parentNode;
+        const jobHeading = parentNode.querySelector('.jobHeading').innerText;
+        const jobTitle = parentNode.querySelector('.jobTitle').innerText;
+        const jobType = parentNode.querySelector('.jobType').innerText;
+        const desc = parentNode.querySelector('.desc').innerText;
+        parentNode.querySelector('.state').innerText = 'REJECTED';
+
+        const jobCardInfo = {
+            jobHeading,
+            jobTitle,
+            jobType,
+            state: 'REJECTED',
+            desc,
+        }
+        const jobExist = interviewList.find(item => item.jobHeading == jobCardInfo.jobHeading);
+        if (!jobExist) {
+            rejectedList.push(jobCardInfo);
+        }
+        renderRejected();
+        totalCardCount();
     }
 })
 
@@ -73,7 +98,6 @@ function renderInterview(){
     interviewFilterSection.innerHTML = ''
 
     for(let interview of interviewList){
-        console.log(interview);
         let div = document.createElement('div');
         div.className = "jobCard bg-white p-6 rounded-2xl flex justify-between"
         div.innerHTML = `
@@ -99,6 +123,37 @@ function renderInterview(){
         `
 
         interviewFilterSection.appendChild(div);
+    }
+}
+function renderRejected(){
+    interviewFilterSection.innerHTML = ''
+
+    for(let rejection of rejectedList){
+        let div = document.createElement('div');
+        div.className = "jobCard bg-white p-6 rounded-2xl flex justify-between"
+        div.innerHTML = `
+            <div>
+                    <!-- part 1 -->
+                <h2 id="" class="jobHeading text-[16px] font-bold">${rejection.jobHeading}</h2>
+                <p id="" class="jobTitle mb-5 text-[#64748B] text-[12px]">${rejection.jobTitle}</p>
+                    <!-- part 2 -->
+                <p id="" class="jobType text-[#64748B] text-[12px] mb-2">${rejection.jobType}</p>
+                <!-- part 3 -->
+                 <p id="" class="state bg-[#EEF4FF] px-3 py-2 w-28 text-[12px] text-center">${rejection.state}</p>
+                 <p class="text-[#323B49] text-[12px] mb-3.5 mt-3.5 desc">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                 <!-- Part 5 -->
+                 <div class="buttons flex gap-3">
+                    <button class="btn btn-outline btn-success btn-sm">INTERVIEW</button>
+                    <button class="btn btn-outline btn-error btn-sm">REJECTED</button>
+                 </div>
+                </div>
+                <!--Main part 2 -->
+                <div>
+                    <button class="btn btn-sm remove-btn"><i class="fa-solid fa-trash"></i></button>
+                </div>
+        `
+
+        rejectedFilterSection.appendChild(div);
     }
 }
 
