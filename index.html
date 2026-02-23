@@ -22,12 +22,21 @@
         *{
             font-family: "Geist", sans-serif;
         }
+       @media screen and (max-width: 576px){
+        .dashBoard{
+            flex-direction: column;
+            text-align: center;
+        }
+        .mainHeading{
+            text-align: center;
+        }
+       }
     </style>
 </head>
 <body class=" text-[#002C5C]">
     <header class="w-[80%] mx-auto text-[#002C5C] space-y-5 py-10">
-        <h1 class="font-bold text-2xl">Job Application Tracker</h1>
-        <div class="dashBoard flex sm:flex-row gap-4 justify-between items-center">
+        <h1 class="mainHeading font-bold text-2xl">Job Application Tracker</h1>
+        <div class="dashBoard flex gap-4 justify-between items-center">
             <div class="bg-white w-[360px] p-5 rounded-2xl">
                 <p class="">Total</p>
                 <p id="total-count" class="text-2xl font-bold">0</p>
