@@ -50,21 +50,22 @@ mainContainer.addEventListener('click', function(event){
         const jobHeading = parentNode.querySelector('.jobHeading').innerText;
         const jobTitle = parentNode.querySelector('.jobTitle').innerText;
         const jobType = parentNode.querySelector('.jobType').innerText;
-        const state = parentNode.querySelector('.state').innerText;
         const desc = parentNode.querySelector('.desc').innerText;
+        parentNode.querySelector('.state').innerText = 'INTERVIEWING';
 
         const jobCardInfo = {
             jobHeading,
             jobTitle,
             jobType,
-            state,
-            desc
+            state:'INTERVIEWING',
+            desc,
         }
         const jobExist = interviewList.find(item => item.jobHeading == jobCardInfo.jobHeading);
         if (!jobExist) {
             interviewList.push(jobCardInfo);
         }
         renderInterview();
+        totalCardCount();
     }
 })
 
@@ -78,16 +79,12 @@ function renderInterview(){
         div.innerHTML = `
             <div>
                     <!-- part 1 -->
-                <h2 id="" class="jobHeading text-[16px] font-bold">Mobile First Corp</h2>
-                <p id="" class="jobTitle mb-5 text-[#64748B] text-[12px]">React Native Developer</p>
+                <h2 id="" class="jobHeading text-[16px] font-bold">${interview.jobHeading}</h2>
+                <p id="" class="jobTitle mb-5 text-[#64748B] text-[12px]">${interview.jobTitle}</p>
                     <!-- part 2 -->
-                <p id="" class="jobType text-[#64748B] text-[12px] mb-2">Remote
-                •
-                Full-time
-                •
-                $130,000 - $175,000</p>
+                <p id="" class="jobType text-[#64748B] text-[12px] mb-2">${interview.jobType}</p>
                 <!-- part 3 -->
-                 <p id="" class="state bg-[#EEF4FF] px-3 py-2 w-28 text-[12px] text-center">NOT APPLIED</p>
+                 <p id="" class="state bg-[#EEF4FF] px-3 py-2 w-28 text-[12px] text-center">${interview.state}</p>
                  <p class="text-[#323B49] text-[12px] mb-3.5 mt-3.5 desc">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                  <!-- Part 5 -->
                  <div class="buttons flex gap-3">
